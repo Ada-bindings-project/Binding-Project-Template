@@ -1,0 +1,13 @@
+# Header
+Name: C-binding
+Category: Misc
+Project: @_project_name_@.gpr
+Script: template_helper.py
+
+# Variables
+Project_Name: CBinding: The name of the project must be a simple name.
+
+# Description
+[Description]
+A project to bind to C libraries.
+

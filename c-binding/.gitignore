@@ -12,3 +12,9 @@ messages.txt
 b__*
 *bexch
 .#*#
+*.ci
+*.cswi
+messages.txt
+.generate
+clang_ref_cache.db
+.messages.txt

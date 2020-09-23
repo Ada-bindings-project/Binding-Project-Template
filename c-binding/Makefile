@@ -20,10 +20,12 @@ gen:.generate
 	cd .gen; gcc -c ${CFLAGS} -C  ${CURDIR}/src/input.cpp
 	cp .gen/@_project_name_@-low_level-*_h.ads src/gen
 	cd src/gen; rm -f *-stdint_h.ads *-bits_types_h.ads *-bits_stdint_uintn_h.ads *-bits_stdint_intn_h.ads
-	
 	python bin/patch_generated
 
 	@gprbuild  -j0 -k -p -P @_project_name_@.gpr 2>&1 | tee .messages.txt
+
+# evaluate the build and generate empty .sed files for failed specs.
+	find sed -size 0 -name "*.sed" -delete
 	@if (grep "compilation of" .messages.txt) ; then\
 		echo "FAIL#";\
 		touch `cat .messages.txt  | grep "compilation of" | grep "failed" | sed "s-  - -g" | cut -f 5 -d " " | \
